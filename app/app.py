@@ -1,4 +1,8 @@
-# app.py - AI Interview System with Supabase and OpenAI
+# DEPRECATED (MONOLITHIC VERSION):
+# This file contains the original monolithic implementation.
+# It is kept only for historical reference.
+# Do not add new features here; use the modular files instead.
+
 import streamlit as st
 import os
 from datetime import datetime
