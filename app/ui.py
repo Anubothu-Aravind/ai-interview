@@ -5,7 +5,14 @@ import time
 from datetime import datetime
 
 from app.utils import extract_text_from_pdf
-from app.audio import text_to_speech, speech_to_text
+from app.audio import (
+    text_to_speech,
+    start_recording,
+    record_chunk,
+    draw_waveform,
+    transcribe_partial,
+    stop_and_transcribe,
+)
 from app.openai_client import ask_ai_question, evaluate_answer
 from app.history import render_history
 
@@ -16,16 +23,6 @@ def render_sidebar(supabase_connected: bool, openai_connected: bool, db):
         st.markdown("### 📊 System Status")
         st.markdown(f"**Supabase:** {'✅ Connected' if supabase_connected else '❌ Not Connected'}")
         st.markdown(f"**OpenAI:** {'✅ Ready' if openai_connected else '❌ Not Configured'}")
-
-        st.markdown("---")
-        st.markdown("### 📖 How It Works")
-        st.markdown("""
-        1. Upload resume & job description  
-        2. AI asks 10 questions  
-        3. Answer via text or voice  
-        4. Get instant feedback  
-        5. View final results
-        """)
 
         st.markdown("---")
         if st.button("📚 View Past Interviews"):
@@ -77,6 +74,8 @@ def render_setup(openai_client):
             "start_time": datetime.now().isoformat(),
         }
 
+        st.session_state.hr_mode = interview_type == "hr"
+
         with st.spinner("🤖 Preparing first question..."):
             st.session_state.current_question = ask_ai_question(
                 openai_client,
@@ -89,132 +88,159 @@ def render_setup(openai_client):
 
         st.session_state.interview_started = True
         st.session_state.current_question_num = 1
+        st.session_state.question_spoken = False
+        st.session_state.recording = False
         st.rerun()
 
 
 # ---------- Interview Screen ----------
 def render_interview(openai_client):
     q_num = st.session_state.current_question_num
-    total = st.session_state.total_questions
+    now = time.time()
 
-    st.progress((q_num - 1) / total, text=f"Question {q_num} of {total}")
+    st.progress((q_num - 1) / st.session_state.total_questions)
 
-    st.markdown(f"""
-    <div class="question-box">
-        <h3>Question {q_num}</h3>
-        <p>{st.session_state.current_question}</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("🔊 Hear Question"):
-        text_to_speech(st.session_state.current_question)
-
-    # --- Safe state keys ---
-    answer_key = f"answer_{q_num}"
-    buffer_key = f"voice_buffer_{q_num}"
-
-    if buffer_key not in st.session_state:
-        st.session_state[buffer_key] = ""
-
-    answer = st.text_area(
-        "Your Answer",
-        height=200,
-        key=answer_key,
-        value=st.session_state[buffer_key],
+    st.markdown(
+        f"""
+        <div class="question-box">
+            <h3>Question {q_num}</h3>
+            <p>{st.session_state.current_question}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
-    col1, col2 = st.columns(2)
+    # 🔊 Auto-speak question once
+    if not st.session_state.question_spoken:
+        text_to_speech(st.session_state.current_question)
+        st.session_state.question_spoken = True
+        st.session_state.question_start_time = now
 
-    with col1:
-        if st.button("🎤 Record Voice"):
-            voice = speech_to_text()
-            if voice:
-                st.session_state[buffer_key] = voice
-                st.rerun()
+    elapsed = now - st.session_state.question_start_time
 
-        st.caption("Tip: Speak clearly within 2 seconds. Avoid background noise.")
+    # 🔁 Repeat allowed for 2 minutes
+    if elapsed <= st.session_state.repeat_window:
+        if st.button("🔁 Repeat Question"):
+            text_to_speech(st.session_state.current_question)
+    else:
+        st.caption("🔒 Repeat disabled")
 
-    with col2:
-        if st.button("➡️ Submit Answer", type="primary"):
-            if not answer.strip():
-                st.warning("Answer cannot be empty")
+    # ⏱️ Start recording after repeat window
+    if elapsed > st.session_state.repeat_window and not st.session_state.recording:
+        for i in [3, 2, 1]:
+            st.warning(f"Recording starts in {i}...")
+            time.sleep(1)
+
+        st.session_state.recording = True
+        st.session_state.recording_start_time = time.time()
+        start_recording()
+        st.rerun()
+
+    # 🎙️ Recording phase
+    if st.session_state.recording:
+        rec_elapsed = time.time() - st.session_state.recording_start_time
+        remaining = st.session_state.record_max_time - rec_elapsed
+
+        st.info(f"🎙️ Recording… {int(remaining)} seconds remaining")
+
+        record_chunk()
+        draw_waveform()
+
+        # Partial transcription every 5s
+        if int(rec_elapsed) % 5 == 0:
+            transcribe_partial()
+
+        # Show live transcript near end
+        if remaining <= st.session_state.preview_time:
+            st.text_area(
+                "Live Transcription Preview",
+                value=st.session_state.partial_transcript,
+                height=150,
+            )
+
+        # Stop button after 1.5 min
+        if rec_elapsed >= st.session_state.stop_button_time:
+            if st.button("⏹️ Stop & Submit"):
+                finalize_answer(openai_client)
                 return
 
-            with st.spinner("🤖 Evaluating answer..."):
-                score, feedback = evaluate_answer(
-                    openai_client,
-                    st.session_state.current_question,
-                    answer,
-                    st.session_state.interview_data["jd"],
-                    st.session_state.interview_data["interview_type"],
-                )
+        # Auto stop
+        if remaining <= 0:
+            finalize_answer(openai_client)
+            return
 
-            qa = {
-                "number": q_num,
-                "question": st.session_state.current_question,
-                "answer": answer,
-                "score": score,
-                "feedback": feedback,
-            }
-
-            st.session_state.all_qa.append(qa)
-            st.session_state.conversation_history.append({
-                "question": qa["question"],
-                "answer": qa["answer"],
-            })
-
-            # cleanup buffer
-            st.session_state.pop(buffer_key, None)
-
-            if q_num < total:
-                st.session_state.current_question_num += 1
-                st.session_state.current_question = ask_ai_question(
-                    openai_client,
-                    st.session_state.interview_data["resume"],
-                    st.session_state.interview_data["jd"],
-                    st.session_state.interview_data["interview_type"],
-                    st.session_state.current_question_num,
-                    st.session_state.conversation_history,
-                )
-                time.sleep(0.5)
-                st.rerun()
-            else:
-                st.session_state.current_question_num += 1
-                st.rerun()
+        time.sleep(0.1)
+        st.rerun()
 
 
-# ---------- Results Screen ----------
+# ---------- Finalize Answer ----------
+def finalize_answer(openai_client):
+    answer = stop_and_transcribe()
+    q = st.session_state.current_question
+
+    score, feedback = evaluate_answer(
+        openai_client,
+        q,
+        answer,
+        st.session_state.interview_data["jd"],
+        st.session_state.interview_data["interview_type"],
+    )
+
+    st.session_state.all_qa.append({
+        "number": st.session_state.current_question_num,
+        "question": q,
+        "answer": answer,
+        "score": score,
+        "feedback": feedback,
+    })
+
+    st.session_state.conversation_history.append({
+        "question": q,
+        "answer": answer,
+    })
+
+    # Reset states
+    st.session_state.question_spoken = False
+    st.session_state.recording = False
+    st.session_state.partial_transcript = ""
+
+    st.session_state.current_question_num += 1
+
+    if st.session_state.current_question_num <= st.session_state.total_questions:
+        st.session_state.current_question = ask_ai_question(
+            openai_client,
+            st.session_state.interview_data["resume"],
+            st.session_state.interview_data["jd"],
+            st.session_state.interview_data["interview_type"],
+            st.session_state.current_question_num,
+            st.session_state.conversation_history,
+        )
+
+    st.rerun()
+
+
+# ---------- Results ----------
 def render_results(db):
     scores = [qa["score"] for qa in st.session_state.all_qa]
     avg = sum(scores) / len(scores)
-    pct = (avg / 10) * 100
 
     st.markdown("### 🎉 Interview Completed")
-    st.metric("Overall Score", f"{avg:.1f}/10", f"{pct:.0f}%")
+    st.metric("Overall Score", f"{avg:.1f}/10")
 
     for qa in st.session_state.all_qa:
-        with st.expander(f"Q{qa['number']} (Score: {qa['score']}/10)"):
+        with st.expander(f"Q{qa['number']}"):
             st.write("**Question:**", qa["question"])
             st.write("**Answer:**", qa["answer"])
             st.write("**Feedback:**", qa["feedback"])
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        if st.button("💾 Save to Database"):
-            data = st.session_state.interview_data | {
+    if st.button("💾 Save Interview"):
+        db.save_interview(
+            st.session_state.interview_data | {
                 "qa_pairs": st.session_state.all_qa,
                 "final_score": avg,
             }
-            db.save_interview(data)
-            st.success("Interview saved")
-
-    with col2:
-        st.download_button(
-            "📥 Download JSON",
-            json.dumps(st.session_state.all_qa, indent=2),
-            file_name="interview_results.json",
         )
+        st.success("Saved successfully")
 
 
 # ---------- App Orchestrator ----------

@@ -8,3 +8,7 @@ openai
 python-dotenv
 PyPDF2
 PyAudio
+sounddevice 
+scipy 
+numpy
+matplotlib
