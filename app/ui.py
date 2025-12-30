@@ -1,3 +1,4 @@
+# app/ui.py
 import streamlit as st
 import json
 import time
@@ -7,7 +8,6 @@ from app.utils import extract_text_from_pdf
 from app.audio import text_to_speech, speech_to_text
 from app.openai_client import ask_ai_question, evaluate_answer
 from app.history import render_history
-
 
 
 # ---------- Sidebar ----------
@@ -109,10 +109,18 @@ def render_interview(openai_client):
     if st.button("🔊 Hear Question"):
         text_to_speech(st.session_state.current_question)
 
+    # --- Safe state keys ---
+    answer_key = f"answer_{q_num}"
+    buffer_key = f"voice_buffer_{q_num}"
+
+    if buffer_key not in st.session_state:
+        st.session_state[buffer_key] = ""
+
     answer = st.text_area(
         "Your Answer",
         height=200,
-        key=f"answer_{q_num}"
+        key=answer_key,
+        value=st.session_state[buffer_key],
     )
 
     col1, col2 = st.columns(2)
@@ -121,8 +129,10 @@ def render_interview(openai_client):
         if st.button("🎤 Record Voice"):
             voice = speech_to_text()
             if voice:
-                st.session_state[f"answer_{q_num}"] = voice
+                st.session_state[buffer_key] = voice
                 st.rerun()
+
+        st.caption("Tip: Speak clearly within 2 seconds. Avoid background noise.")
 
     with col2:
         if st.button("➡️ Submit Answer", type="primary"):
@@ -153,6 +163,9 @@ def render_interview(openai_client):
                 "answer": qa["answer"],
             })
 
+            # cleanup buffer
+            st.session_state.pop(buffer_key, None)
+
             if q_num < total:
                 st.session_state.current_question_num += 1
                 st.session_state.current_question = ask_ai_question(
@@ -163,7 +176,7 @@ def render_interview(openai_client):
                     st.session_state.current_question_num,
                     st.session_state.conversation_history,
                 )
-                time.sleep(1)
+                time.sleep(0.5)
                 st.rerun()
             else:
                 st.session_state.current_question_num += 1

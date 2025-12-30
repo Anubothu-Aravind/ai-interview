@@ -1,3 +1,4 @@
+# main.py
 import streamlit as st
 from app.config import load_config
 from app.state import init_session_state

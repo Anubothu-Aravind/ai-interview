@@ -1,3 +1,4 @@
+# app/openai_client.py
 import os
 import json
 import streamlit as st
@@ -37,7 +38,9 @@ Generate question {q_num}/10 for a {interview_type} interview.
 
 def evaluate_answer(client, question, answer, jd, interview_type):
     prompt = f"""
-Evaluate this answer and return JSON only.
+Return JSON with exactly two fields:
+score (number 0-10)
+feedback (string)
 
 Question: {question}
 Answer: {answer}
@@ -49,4 +52,5 @@ Answer: {answer}
         temperature=0.5,
     )
 
-    return json.loads(res.choices[0].message.content)
+    data = json.loads(res.choices[0].message.content)
+    return data["score"], data["feedback"]

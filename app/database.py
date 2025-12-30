@@ -1,3 +1,4 @@
+# app/database.py
 import os
 from datetime import datetime
 import streamlit as st
@@ -25,7 +26,35 @@ def init_supabase() -> Client | None:
 class DatabaseManager:
     def __init__(self, supabase: Client):
         self.supabase = supabase
+    def create_tables(self) -> str:
+            """
+            Returns SQL schema for Supabase (display-only).
+            """
+            return """
+            -- Interview sessions
+            CREATE TABLE IF NOT EXISTS interviews (
+                id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                candidate_name TEXT NOT NULL,
+                job_title TEXT NOT NULL,
+                interview_type TEXT NOT NULL,
+                final_score FLOAT,
+                start_time TIMESTAMP,
+                completed_at TIMESTAMP,
+                created_at TIMESTAMP DEFAULT NOW()
+            );
 
+            -- Questions and answers
+            CREATE TABLE IF NOT EXISTS questions (
+                id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                interview_id UUID REFERENCES interviews(id) ON DELETE CASCADE,
+                question_number INT,
+                question_text TEXT,
+                answer TEXT,
+                score FLOAT,
+                feedback TEXT,
+                created_at TIMESTAMP DEFAULT NOW()
+            );
+            """
     def save_interview(self, interview_data):
         response = self.supabase.table("interviews").insert({
             "candidate_name": interview_data["candidate_name"],

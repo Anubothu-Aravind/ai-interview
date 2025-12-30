@@ -2,6 +2,7 @@
 # This file contains the original monolithic implementation.
 # It is kept only for historical reference.
 # Do not add new features here; use the modular files instead.
+# app/app.py
 
 import streamlit as st
 import os
