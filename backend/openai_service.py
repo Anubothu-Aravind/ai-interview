@@ -49,7 +49,7 @@ Return ONLY the question text, nothing else."""
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model=settings.OPENAI_MODEL,
                 messages=[
                     {"role": "system", "content": "You are an expert technical and HR interviewer."},
                     {"role": "user", "content": prompt}
@@ -94,7 +94,7 @@ Return ONLY valid JSON in this exact format:
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model=settings.OPENAI_MODEL,
                 messages=[
                     {"role": "system", "content": "You are an expert interview evaluator. Return only valid JSON."},
                     {"role": "user", "content": prompt}
@@ -121,7 +121,7 @@ Return ONLY valid JSON in this exact format:
         """Convert text to speech using OpenAI TTS"""
         try:
             response = self.client.audio.speech.create(
-                model="tts-1",
+                model=settings.OPENAI_TTS_MODEL,
                 voice="alloy",
                 input=text
             )
@@ -134,7 +134,7 @@ Return ONLY valid JSON in this exact format:
         """Convert speech to text using OpenAI Whisper"""
         try:
             response = self.client.audio.transcriptions.create(
-                model="whisper-1",
+                model=settings.OPENAI_STT_MODEL,
                 file=audio_file
             )
             return response.text.strip()

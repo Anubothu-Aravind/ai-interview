@@ -122,9 +122,19 @@ const InterviewQuestion: React.FC<Props> = ({
       // Start partial transcription every 5 seconds
       const transcriptionInterval = setInterval(async () => {
         if (audioRecorderRef.current?.isRecording()) {
-          // In a real implementation, you'd send partial audio chunks
-          // For now, we'll just show a placeholder
-          setTranscription('Recording in progress...');
+          try {
+            // Get partial audio recorded so far
+            const partialAudio = audioRecorderRef.current.getPartialAudio();
+            
+            // Only transcribe if we have enough audio (at least 3 seconds worth)
+            if (partialAudio.size > 10000) {
+              const partialTranscription = await apiService.speechToText(partialAudio);
+              setTranscription(partialTranscription);
+            }
+          } catch (err) {
+            // Silently fail for partial transcription - we'll get full transcription at the end
+            console.log('Partial transcription skipped:', err);
+          }
         }
       }, 5000);
 
@@ -215,7 +225,7 @@ const InterviewQuestion: React.FC<Props> = ({
               : `Stop button available in ${formatTime(90 - recordingTime)}`}
           </p>
           
-          {transcription && recordingTime >= 280 && (
+          {transcription && canStopRecording && (
             <div className="transcription-preview">
               <h4>Live Transcription Preview:</h4>
               <p>{transcription}</p>

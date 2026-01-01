@@ -39,6 +39,14 @@ export class AudioRecorder {
     });
   }
 
+  getPartialAudio(): Blob {
+    /**
+     * Get current recorded audio without stopping the recording.
+     * Used for live transcription.
+     */
+    return new Blob(this.audioChunks, { type: 'audio/wav' });
+  }
+
   cleanup(): void {
     if (this.stream) {
       this.stream.getTracks().forEach((track) => track.stop());

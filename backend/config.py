@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     
     # OpenAI
     OPENAI_API_KEY: str
+    OPENAI_MODEL: str = "gpt-4"
+    OPENAI_TTS_MODEL: str = "tts-1"
+    OPENAI_STT_MODEL: str = "whisper-1"
     
     # Supabase
     SUPABASE_URL: str
