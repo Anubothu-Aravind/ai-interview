@@ -1,27 +1,12 @@
+# Python
 .venv/
 uvc/
 __pycache__/
-.ipynb_checkpoints/
-.DS_Store
-.vscode/
-.env
-.env.local
-.env.*.local
 *.pyc
 *.pyo
 *.pyd
 *.sqlite3
 *.log
-coverage/
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
 *.egg
 *.egg-info/
 dist/
@@ -38,3 +23,39 @@ lib64/
 __pypackages__/
 .python-version
 pip-wheel-metadata/
+coverage/
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Node / React
+frontend/node_modules/
+frontend/build/
+frontend/.pnp
+frontend/.pnp.js
+frontend/coverage
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Testing
+.pytest_cache/
+
+# Misc
+*.swp
+*.swo
+*~
