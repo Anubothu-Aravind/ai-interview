@@ -78,13 +78,34 @@ A comprehensive AI-powered interview platform with separate **React.js Frontend*
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Automatic Setup (Recommended)
+
+**Linux/Mac:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+**Windows:**
+```bash
+setup.bat
+```
+
+This will:
+- Check prerequisites
+- Create environment files
+- Set up Python virtual environment
+- Install all dependencies
+
+### Manual Setup
+
+#### Prerequisites
 - Python 3.12+
 - Node.js 16+
 - OpenAI API Key
 - Supabase account
 
-### Backend Setup
+#### Backend Setup
 
 1. Navigate to backend directory:
 ```bash
@@ -141,6 +162,39 @@ npm start
 ```
 
 Frontend will run on `http://localhost:3000`
+
+### Running the Application
+
+After setup, use the convenient start scripts:
+
+**Linux/Mac:**
+```bash
+# Terminal 1 - Start backend
+./start-backend.sh
+
+# Terminal 2 - Start frontend
+./start-frontend.sh
+```
+
+**Windows:**
+```bash
+# Terminal 1 - Start backend
+start-backend.bat
+
+# Terminal 2 - Start frontend
+start-frontend.bat
+```
+
+Or manually:
+```bash
+# Backend
+cd backend && source venv/bin/activate && python -m backend.main
+
+# Frontend (new terminal)
+cd frontend && npm start
+```
+
+Access the application at `http://localhost:3000`
 
 ## 📁 Project Structure
 
