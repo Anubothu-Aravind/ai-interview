@@ -1,0 +1,123 @@
+.results-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.score-card {
+  text-align: center;
+  padding: 3rem;
+  border-radius: 15px;
+  color: white;
+  margin: 2rem auto;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.final-score {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.score-label {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.percentage {
+  font-size: 2rem;
+}
+
+.interview-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.interview-info p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.results-container h3 {
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.qa-list {
+  margin: 1rem 0;
+}
+
+.qa-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.qa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #e9ecef;
+}
+
+.question-number {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.score-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.qa-content {
+  padding: 1rem;
+}
+
+.qa-content p {
+  margin: 0.8rem 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+.question {
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions button {
+  flex: 1;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
