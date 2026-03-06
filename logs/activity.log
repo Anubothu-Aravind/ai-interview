@@ -8,3 +8,4 @@
 [2026-03-06T16:08:41.051Z] support configurable timeout
 [2026-03-06T16:48:49.776Z] fix import ordering to match project convention
 [2026-03-06T17:18:39.078Z] add health check endpoint with detailed status
+[2026-03-06T17:30:01.679Z] correct off-by-one error in pagination logic
