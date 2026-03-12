@@ -8,3 +8,4 @@
 [2026-03-12T05:29:14.506Z] configure auto-deploy for staging branch
 [2026-03-12T08:12:24.110Z] document environment variable configuration
 [2026-03-12T08:31:33.486Z] introduce dark mode toggle
+[2026-03-12T15:04:34.371Z] fix broken redirect after authentication
