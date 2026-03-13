@@ -13,3 +13,4 @@
 [2026-03-13T06:18:19.144Z] fix test data setup for isolated test runs
 [2026-03-13T08:12:30.269Z] add Prometheus metrics endpoint
 [2026-03-13T12:44:09.581Z] add caching step to GitHub Actions workflow
+[2026-03-13T13:33:38.945Z] add regression test for pagination bug
