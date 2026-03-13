@@ -10,3 +10,4 @@
 [2026-03-12T08:31:33.486Z] introduce dark mode toggle
 [2026-03-12T15:04:34.371Z] fix broken redirect after authentication
 [2026-03-12T16:40:14.589Z] implement request caching with TTL support
+[2026-03-13T06:18:19.144Z] fix test data setup for isolated test runs
