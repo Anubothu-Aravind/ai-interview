@@ -6,3 +6,4 @@
 [2026-03-16T13:19:37.705Z] resolve flaky timeout in database connection
 [2026-03-16T15:14:50.219Z] simplify state management in scheduler
 [2026-03-17T10:36:09.545Z] correct off-by-one error in pagination logic
+[2026-03-17T12:08:10.492Z] add real-time status updates via SSE
