@@ -10,3 +10,4 @@
 [2026-03-17T12:59:05.832Z] optimize startup sequence to reduce cold boot time
 [2026-03-17T16:11:17.591Z] reduce bundle size by tree-shaking unused imports
 [2026-03-18T14:18:52.804Z] update nginx reverse proxy configuration
+[2026-03-18T16:18:04.004Z] switch from moment.js to native Date handling
