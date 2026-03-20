@@ -14,3 +14,4 @@
 [2026-03-19T04:08:36.545Z] resolve null pointer in user validation
 [2026-03-19T09:38:35.427Z] resolve flaky timeout in database connection
 [2026-03-20T05:47:50.466Z] remove polyfills no longer needed
+[2026-03-20T12:26:49.851Z] add Prometheus metrics endpoint
