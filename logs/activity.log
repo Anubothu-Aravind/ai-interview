@@ -24,3 +24,4 @@
 [2026-03-21T12:58:13.881Z] add support for batch processing
 [2026-03-21T16:51:18.885Z] fix token refresh not updating stored credentials
 [2026-03-22T11:07:09.589Z] reduce bundle size by tree-shaking unused imports
+[2026-03-22T15:15:56.927Z] configure auto-deploy for staging branch
