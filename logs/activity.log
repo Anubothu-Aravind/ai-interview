@@ -7,3 +7,4 @@
 [2026-03-26T09:47:12.889Z] pin dependency versions for reproducible builds
 [2026-03-26T10:56:15.063Z] add load testing configuration
 [2026-03-27T11:55:05.163Z] optimize JSON serialization for large payloads
+[2026-03-28T03:36:50.375Z] fix incorrect timestamp parsing for UTC dates
