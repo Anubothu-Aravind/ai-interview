@@ -11,3 +11,4 @@
 [2026-03-28T03:54:45.080Z] update lock file after dependency audit
 [2026-03-28T12:55:45.986Z] configure auto-deploy for staging branch
 [2026-03-29T07:07:34.541Z] optimize JSON serialization for large payloads
+[2026-03-29T11:18:11.986Z] update README with setup instructions
