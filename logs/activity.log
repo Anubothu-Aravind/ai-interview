@@ -2,3 +2,4 @@
 [2026-03-30T16:56:43.158Z] add environment-specific config files
 [2026-03-31T04:46:46.980Z] update license headers for new year
 [2026-03-31T09:34:47.943Z] add search with debounced input
+[2026-03-31T11:50:49.340Z] simplify state management in scheduler
