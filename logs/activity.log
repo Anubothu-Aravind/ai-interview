@@ -13,3 +13,4 @@
 [2026-04-02T06:42:32.702Z] update prettier config for consistency
 [2026-04-02T10:11:02.965Z] update README with setup instructions
 [2026-04-02T16:44:50.091Z] support CSV and JSON export formats
+[2026-04-03T07:02:18.926Z] add lint check to pre-commit hook
