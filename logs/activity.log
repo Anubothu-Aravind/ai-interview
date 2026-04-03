@@ -14,3 +14,4 @@
 [2026-04-02T10:11:02.965Z] update README with setup instructions
 [2026-04-02T16:44:50.091Z] support CSV and JSON export formats
 [2026-04-03T07:02:18.926Z] add lint check to pre-commit hook
+[2026-04-03T09:08:49.090Z] improve startup time by deferring non-critical init
