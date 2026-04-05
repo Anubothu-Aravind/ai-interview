@@ -17,3 +17,4 @@
 [2026-04-03T09:08:49.090Z] improve startup time by deferring non-critical init
 [2026-04-03T16:30:01.675Z] increase test coverage to 85%
 [2026-04-04T09:15:07.380Z] add tests for rate limiter logic
+[2026-04-05T09:52:53.270Z] add pagination support to list endpoints
