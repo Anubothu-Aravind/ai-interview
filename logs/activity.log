@@ -4,3 +4,4 @@
 [2026-04-07T04:49:45.217Z] remove trailing whitespace across project
 [2026-04-07T10:18:13.496Z] update license headers for new year
 [2026-04-07T14:39:31.035Z] add environment-specific config files
+[2026-04-07T16:34:48.356Z] clean up unused environment variables
