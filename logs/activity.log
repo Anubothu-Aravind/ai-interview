@@ -7,3 +7,4 @@
 [2026-04-07T16:34:48.356Z] clean up unused environment variables
 [2026-04-09T05:12:51.998Z] add pagination support to list endpoints
 [2026-04-09T09:12:54.742Z] fix import ordering to match project convention
+[2026-04-09T12:48:50.465Z] set up environment config for staging deployment
