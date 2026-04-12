@@ -28,3 +28,4 @@
 [2026-04-12T14:31:57.954Z] add snapshot tests for response formats
 [2026-04-12T14:47:58.190Z] remove unused packages from package.json
 [2026-04-12T16:47:50.882Z] implement input sanitization middleware
+[2026-04-12T16:58:08.578Z] configure auto-deploy for staging branch
