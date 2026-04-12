@@ -21,3 +21,4 @@
 [2026-04-11T15:50:27.318Z] reorganize file structure for better discoverability
 [2026-04-11T16:22:02.710Z] update changelog for v2.1 release
 [2026-04-12T07:35:40.438Z] validate error responses match schema
+[2026-04-12T08:40:43.017Z] refactor database queries to use query builder
