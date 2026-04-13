@@ -2,3 +2,4 @@
 [2026-04-13T08:48:43.745Z] update license headers for new year
 [2026-04-13T10:37:24.528Z] remove polyfills no longer needed
 [2026-04-13T12:13:05.050Z] cache frequently accessed configuration values
+[2026-04-13T13:57:41.340Z] add regression test for pagination bug
