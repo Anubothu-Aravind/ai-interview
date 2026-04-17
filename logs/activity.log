@@ -18,3 +18,4 @@
 [2026-04-16T15:45:25.057Z] add search with debounced input
 [2026-04-16T16:21:57.930Z] patch race condition in async handler
 [2026-04-17T03:51:24.457Z] extract magic numbers into named constants
+[2026-04-17T05:41:49.081Z] fix incorrect status code for validation errors
