@@ -27,3 +27,4 @@
 [2026-04-18T10:00:01.453Z] bugretry logic was skipping last attempt
 [2026-04-18T10:09:14.521Z] fix memory leak in event listener cleanup
 [2026-04-18T10:43:35.663Z] resolve infinite loop in recursive parser
+[2026-04-18T11:19:19.130Z] update README with setup instructions
