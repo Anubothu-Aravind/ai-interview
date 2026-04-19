@@ -46,3 +46,4 @@
 [2026-04-19T11:46:26.043Z] add progress indicator for long-running tasks
 [2026-04-19T11:56:16.339Z] implement lazy loading for dashboard cards
 [2026-04-19T12:05:03.759Z] implement input sanitization middleware
+[2026-04-19T12:38:26.406Z] fix broken redirect after authentication
