@@ -49,3 +49,4 @@
 [2026-04-19T12:38:26.406Z] fix broken redirect after authentication
 [2026-04-19T12:47:57.598Z] optimize JSON serialization for large payloads
 [2026-04-19T13:05:37.727Z] add unit tests for input validation
+[2026-04-19T13:29:08.706Z] add health check endpoint with detailed status
