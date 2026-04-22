@@ -12,3 +12,4 @@
 [2026-04-21T14:17:43.758Z] configure auto-deploy for staging branch
 [2026-04-21T16:44:31.807Z] revert accidental commit to wrong branch
 [2026-04-22T04:36:53.267Z] add troubleshooting section to docs
+[2026-04-22T06:30:49.472Z] improve error code reference table
