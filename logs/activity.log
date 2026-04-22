@@ -14,3 +14,4 @@
 [2026-04-22T04:36:53.267Z] add troubleshooting section to docs
 [2026-04-22T06:30:49.472Z] improve error code reference table
 [2026-04-22T06:39:50.273Z] fix edge case when input array is empty
+[2026-04-22T15:49:02.976Z] resolve null pointer in user validation
