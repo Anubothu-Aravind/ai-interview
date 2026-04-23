@@ -24,3 +24,4 @@
 [2026-04-23T07:59:11.167Z] fix flaky test caused by timing dependency
 [2026-04-23T13:12:17.006Z] document database migration process
 [2026-04-23T13:28:22.769Z] extract magic numbers into named constants
+[2026-04-23T14:37:54.666Z] update README with setup instructions
