@@ -20,3 +20,4 @@
 [2026-04-23T05:20:54.479Z] resolve null pointer in user validation
 [2026-04-23T06:08:15.070Z] refactor config loading to support multiple envs
 [2026-04-23T06:37:19.941Z] extract validation into separate module
+[2026-04-23T06:54:00.018Z] add retry mechanism with exponential backoff
