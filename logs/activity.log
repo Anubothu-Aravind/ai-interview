@@ -30,3 +30,4 @@
 [2026-04-24T09:39:59.280Z] correct regex pattern for email validation
 [2026-04-24T11:35:00.760Z] fix incorrect status code for validation errors
 [2026-04-24T13:06:08.444Z] split monolithic handler into services
+[2026-04-24T13:15:53.022Z] refactor error handling to use custom error classes
