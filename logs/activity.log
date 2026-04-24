@@ -27,3 +27,4 @@
 [2026-04-23T14:37:54.666Z] update README with setup instructions
 [2026-04-23T15:45:16.008Z] patch XSS vulnerability in form input
 [2026-04-24T06:18:11.498Z] handle missing env variable gracefully
+[2026-04-24T09:39:59.280Z] correct regex pattern for email validation
