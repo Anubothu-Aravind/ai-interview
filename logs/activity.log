@@ -47,3 +47,4 @@
 [2026-04-25T12:27:24.954Z] sync package-lock after merge
 [2026-04-25T12:37:08.388Z] prevent duplicate entries in cache
 [2026-04-25T13:43:19.484Z] mock external service calls in test suite
+[2026-04-25T14:48:21.230Z] add lint check to pre-commit hook
