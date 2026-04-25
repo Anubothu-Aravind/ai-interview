@@ -45,3 +45,4 @@
 [2026-04-25T12:09:23.805Z] fix edge case when input array is empty
 [2026-04-25T12:18:04.103Z] add response compression middleware
 [2026-04-25T12:27:24.954Z] sync package-lock after merge
+[2026-04-25T12:37:08.388Z] prevent duplicate entries in cache
