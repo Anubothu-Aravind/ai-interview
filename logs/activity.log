@@ -63,3 +63,4 @@
 [2026-04-26T09:42:59.785Z] add rate limiting to public endpoints
 [2026-04-26T10:20:35.538Z] simplify auth middleware chain
 [2026-04-26T10:29:03.247Z] add contributing guidelines
+[2026-04-26T10:38:34.014Z] update API documentation with new endpoints
