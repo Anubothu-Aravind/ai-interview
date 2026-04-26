@@ -66,3 +66,4 @@
 [2026-04-26T10:38:34.014Z] update API documentation with new endpoints
 [2026-04-26T10:47:54.511Z] fix flaky test caused by timing dependency
 [2026-04-26T11:07:36.505Z] add support for custom log levels
+[2026-04-26T11:49:14.679Z] extract common utilities into shared helper
