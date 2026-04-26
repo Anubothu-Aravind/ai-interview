@@ -62,3 +62,4 @@
 [2026-04-26T08:56:32.480Z] improve error code reference table
 [2026-04-26T09:42:59.785Z] add rate limiting to public endpoints
 [2026-04-26T10:20:35.538Z] simplify auth middleware chain
+[2026-04-26T10:29:03.247Z] add contributing guidelines
