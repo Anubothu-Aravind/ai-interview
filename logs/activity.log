@@ -71,3 +71,4 @@
 [2026-04-26T14:45:09.179Z] replace callback pattern with async/await
 [2026-04-26T14:58:02.289Z] decouple logging from business logic
 [2026-04-26T16:06:23.876Z] fix incorrect status code for validation errors
+[2026-04-26T16:40:00.629Z] document environment variable configuration
