@@ -64,3 +64,4 @@
 [2026-04-26T10:20:35.538Z] simplify auth middleware chain
 [2026-04-26T10:29:03.247Z] add contributing guidelines
 [2026-04-26T10:38:34.014Z] update API documentation with new endpoints
+[2026-04-26T10:47:54.511Z] fix flaky test caused by timing dependency
