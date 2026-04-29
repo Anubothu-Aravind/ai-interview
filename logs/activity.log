@@ -15,3 +15,4 @@
 [2026-04-29T16:48:27.134Z] simplify auth middleware chain
 [2026-04-29T19:48:52.554Z] fix broken redirect after authentication
 [2026-04-29T19:57:40.096Z] refactor file upload handler for better testability
+[2026-04-29T20:07:37.142Z] move business logic out of controller
