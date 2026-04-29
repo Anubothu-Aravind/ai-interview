@@ -14,3 +14,4 @@
 [2026-04-29T12:21:30.421Z] add fallback for browsers without WebSocket support
 [2026-04-29T16:48:27.134Z] simplify auth middleware chain
 [2026-04-29T19:48:52.554Z] fix broken redirect after authentication
+[2026-04-29T19:57:40.096Z] refactor file upload handler for better testability
