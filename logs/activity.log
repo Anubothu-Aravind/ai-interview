@@ -20,3 +20,4 @@
 [2026-05-01T05:19:56.131Z] add environment-specific config files
 [2026-05-01T10:58:06.554Z] improve error code reference table
 [2026-05-01T11:06:34.096Z] validate error responses match schema
+[2026-05-01T12:12:20.123Z] add configurable request timeout
