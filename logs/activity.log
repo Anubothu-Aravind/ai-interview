@@ -18,3 +18,4 @@
 [2026-04-29T20:07:37.142Z] move business logic out of controller
 [2026-04-29T20:17:10.671Z] optimize image loading with lazy initialization
 [2026-05-01T05:19:56.131Z] add environment-specific config files
+[2026-05-01T10:58:06.554Z] improve error code reference table
