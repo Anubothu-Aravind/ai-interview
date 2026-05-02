@@ -25,3 +25,4 @@
 [2026-05-02T03:56:45.486Z] merge upstream changes into feature branch
 [2026-05-02T06:38:01.474Z] validate error responses match schema
 [2026-05-02T10:11:28.385Z] verify webhook delivery retry logic
+[2026-05-02T11:39:31.418Z] migrate from deprecated API to v2
