@@ -28,3 +28,4 @@
 [2026-05-02T11:39:31.418Z] migrate from deprecated API to v2
 [2026-05-03T08:27:47.870Z] add health check endpoint with detailed status
 [2026-05-03T09:50:42.727Z] add environment-specific config files
+[2026-05-03T10:16:52.073Z] refactor error handling to use custom error classes
