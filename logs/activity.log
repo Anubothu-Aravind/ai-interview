@@ -1,1 +1,2 @@
 [2026-05-04T12:02:16.222Z] fix import ordering to match project convention
+[2026-05-04T13:16:41.658Z] reduce bundle size by tree-shaking unused imports
