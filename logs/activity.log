@@ -6,3 +6,4 @@
 [2026-05-06T07:05:31.575Z] consolidate duplicate API call patterns
 [2026-05-06T10:52:48.855Z] update seed data for local development
 [2026-05-06T14:40:29.573Z] update error messages to be more user-friendly
+[2026-05-07T08:28:02.085Z] clean up commented-out dead code
