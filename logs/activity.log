@@ -13,3 +13,4 @@
 [2026-05-07T15:38:51.192Z] validate error responses match schema
 [2026-05-07T16:58:08.802Z] update lock file after dependency audit
 [2026-05-08T03:59:11.584Z] add response compression middleware
+[2026-05-08T13:08:02.515Z] reorganize file structure for better discoverability
