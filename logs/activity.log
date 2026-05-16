@@ -13,3 +13,4 @@
 [2026-05-15T09:59:27.517Z] update error messages to be more user-friendly
 [2026-05-15T11:03:11.815Z] update ESLint config with stricter rules
 [2026-05-15T16:49:28.003Z] clean up unused environment variables
+[2026-05-16T05:10:00.108Z] clean up orphaned database migration files
