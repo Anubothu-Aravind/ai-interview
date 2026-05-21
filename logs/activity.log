@@ -10,3 +10,4 @@
 [2026-05-20T13:10:14.546Z] handle undefined response from external API
 [2026-05-21T06:50:27.915Z] optimize database query with proper indexing
 [2026-05-21T10:26:52.540Z] add webhook notification support
+[2026-05-21T14:48:03.213Z] add usage examples to README
