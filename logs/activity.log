@@ -12,3 +12,4 @@
 [2026-05-21T10:26:52.540Z] add webhook notification support
 [2026-05-21T14:48:03.213Z] add usage examples to README
 [2026-05-22T10:58:01.501Z] remove polyfills no longer needed
+[2026-05-22T14:27:05.799Z] set up environment config for staging deployment
