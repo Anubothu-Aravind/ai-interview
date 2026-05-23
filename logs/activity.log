@@ -14,3 +14,4 @@
 [2026-05-22T10:58:01.501Z] remove polyfills no longer needed
 [2026-05-22T14:27:05.799Z] set up environment config for staging deployment
 [2026-05-23T10:40:19.756Z] add retry mechanism with exponential backoff
+[2026-05-23T15:48:29.298Z] fix memory leak in event listener cleanup
