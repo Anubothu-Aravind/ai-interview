@@ -21,3 +21,4 @@
 [2026-05-24T08:31:13.705Z] simplify nested conditional blocks
 [2026-05-24T13:34:25.925Z] update changelog for v2.1 release
 [2026-05-24T15:12:51.199Z] clarify deployment steps in README
+[2026-05-24T16:41:13.582Z] add edge case tests for boundary values
