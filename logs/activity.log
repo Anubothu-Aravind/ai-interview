@@ -16,3 +16,4 @@
 [2026-05-23T10:40:19.756Z] add retry mechanism with exponential backoff
 [2026-05-23T15:48:29.298Z] fix memory leak in event listener cleanup
 [2026-05-23T15:59:29.195Z] fix token refresh not updating stored credentials
+[2026-05-24T06:31:31.794Z] add integration tests for API endpoints
