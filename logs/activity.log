@@ -19,3 +19,4 @@
 [2026-05-24T06:31:31.794Z] add integration tests for API endpoints
 [2026-05-24T06:45:37.985Z] verify webhook delivery retry logic
 [2026-05-24T08:31:13.705Z] simplify nested conditional blocks
+[2026-05-24T13:34:25.925Z] update changelog for v2.1 release
