@@ -4,3 +4,4 @@
 [2026-05-26T09:51:54.482Z] extract validation into separate module
 [2026-05-26T13:38:21.171Z] add support for custom log levels
 [2026-05-27T13:37:05.320Z] update API documentation with new endpoints
+[2026-05-27T14:59:29.329Z] resolve null pointer in user validation
