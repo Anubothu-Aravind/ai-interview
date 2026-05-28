@@ -5,3 +5,4 @@
 [2026-05-26T13:38:21.171Z] add support for custom log levels
 [2026-05-27T13:37:05.320Z] update API documentation with new endpoints
 [2026-05-27T14:59:29.329Z] resolve null pointer in user validation
+[2026-05-28T07:52:47.943Z] configure auto-deploy for staging branch
